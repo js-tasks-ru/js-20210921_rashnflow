@@ -5,16 +5,14 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-  let sorted = [...arr];
-  if (param === 'asc')
-  {
-    sorted.sort(function (a, b) {
-      return a.localeCompare(b, "ru-en", {caseFirst: 'upper'});
-    });
-  } else {
-    sorted.sort(function (a, b) {
-      return -a.localeCompare(b, 'ru-en',  {caseFirst: 'upper'});
-    });
-  }
+  const sorted = [...arr];
+  sorted.sort(function (a, b) {
+    let value = a.localeCompare(b, "ru-en", {caseFirst: 'upper'});
+    if (param === 'asc')
+      return value;
+    else
+      return -value;
+  });
+
   return sorted;
 }
